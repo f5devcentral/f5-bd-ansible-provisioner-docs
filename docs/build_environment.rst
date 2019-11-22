@@ -35,6 +35,7 @@ This command will take a few minutes to complete.
 - Create an Access Key ID and Secret Access Key. Save the ID and key for later.
 - New to AWS and not sure what this step means? `Click here <https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/>`__
 - Make sure you have subscribed to the right marketplace AMI (Amazon Machine Image).
+  
   - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
 
 Run provisioner
