@@ -7,7 +7,7 @@ before_install:
 install: 
 - pip install awscli --upgrade
 script:
-- ls -al
+- ls -alR
 - ./scripts/docker-docs.sh ./scripts/test-docs.sh
 deploy:
 # DEPLOY TO STAGING
