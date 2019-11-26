@@ -29,7 +29,7 @@ deploy:
   local_dir: docs/_build/html
   upload_dir: $AWS_DIR
   on:
-    branch: v2
+    branch: master
     repo: f5devcentral/F5-Automation-Sandbox
 
 after_deploy:
