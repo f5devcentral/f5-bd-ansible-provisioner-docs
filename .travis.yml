@@ -20,7 +20,7 @@ deploy:
   on:
     branch: master
     repo: f5devcentral/F5-Automation-Sandbox
-DEPLOY TO PRODUCTION
+#DEPLOY TO PRODUCTION
 - provider: s3
   skip_cleanup: true
   access_key_id: $AWS_ACCESS_KEY_ID
