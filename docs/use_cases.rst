@@ -12,4 +12,4 @@ Once the infrastucture is up and running, different use cases and scenrios can b
 Ansible use cases
 -----------------
 
-`View and execute ansible use cases <https://f5-ansible-use-cases.readthedocs.io/en/latest/index.html>`_ that can be run on the F5 Automation Provisioner to test common scenarios. 
+`View and execute ansible use cases <https://clouddocs.f5.com/training/fas-ansible-use-cases/>`_ that can be run on the F5 Automation Provisioner to test common scenarios. 
