@@ -16,5 +16,6 @@ This provisioner is run using Ansible on AWS. To run the provisioner you will ne
 
    build_environment.rst
    use_cases.rst
+   ansible_workshop_101.rst
    teardown.rst
    faq.rst
