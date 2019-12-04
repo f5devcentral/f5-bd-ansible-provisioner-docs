@@ -335,3 +335,5 @@ You have been successful in logging into the BIG-IP and grabbing/displaying fact
 Your access to the BIG-IP is verified.
 
 **Congratulations, your lab is up and running!**
+
+In the next section(s) you can explore use cases and workshops that can be run on the environment.
