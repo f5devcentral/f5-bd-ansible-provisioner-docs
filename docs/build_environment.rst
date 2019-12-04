@@ -15,7 +15,7 @@ Clone the workshop repository on the **docker_host**.
 
 .. code::
 
-   git clone https://github.com/f5alliances/f5_provisioner.git
+   git clone https://github.com/f5devcentral/FAS-provisioner.git
 
 **Build the container**
 
