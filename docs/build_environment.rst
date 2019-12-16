@@ -61,7 +61,7 @@ Now you can start to provision your application environment in AWS.
    
    cd f5_provisioner/provisioner
 
-1. As we are using Ansible for provisioning, you will need to configure the variable file - f5_vars.yml to that will be used by the Ansible playbook. These variables reflect your AWS environment.
+1. As we are using Ansible for provisioning the environment, you will need to configure a variable file 'f5_vars.yml', that will be used by the Ansible playbook. The variables in this file reflect your AWS environment.
 
    - Modify the AWS region on which the infrastructure will spin up
    - Modify the ec2_name_prefix to represent a workshop unique to your environment
