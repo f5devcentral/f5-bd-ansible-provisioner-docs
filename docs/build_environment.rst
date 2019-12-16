@@ -13,8 +13,8 @@ This version of the provisioner can be used to deploy the following components i
 .. image:: images/f5topology.png
    :width: 400
 
-Get Familiar: One Time Setup
-----------------------------
+Installing the Provisioner
+--------------------------
 
 **Install docker**
 
@@ -31,7 +31,9 @@ Clone the workshop repository on the **docker_host**.
 
 **Build the container**
 
-The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a **Dockerfile**.
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a 
+
+**Dockerfile**.
 This image will be used to run the Ansible playbooks for the provisioner.
 From the directory containing the **Dockerfile**, run the build command.
 This command will take a few minutes to complete.
@@ -50,8 +52,8 @@ This command will take a few minutes to complete.
   
   - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
 
-Setup your Sandbox environment
-------------------------------
+Setup the F5 Ansible environment
+---------------------------------
 
 Now you can start to provision your application environment in AWS.
 
@@ -132,8 +134,8 @@ Now you can start to provision your application environment in AWS.
 
       TESTWORKSHOP1-studentX-ansible
 
-Access the Lab
---------------
+Accessing your Environment
+---------------------------
 
 Once the provisioner has run successfully and infrastructure has been spun up.
 
@@ -346,4 +348,4 @@ Your access to the BIG-IP is verified.
 
 **Congratulations, your lab is up and running!**
 
-In the next section(s) you can explore use cases and workshops that can be run on the environment.
+In the next section(s) you can explore Ansible use cases and the 101 lab that can be run on the environment you just built.
