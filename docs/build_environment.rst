@@ -1,8 +1,20 @@
-Build environment
-=================
+F5 Ansible Provisioner
+======================
+The F5/Ansible provisioner is an opensource provisioning tool that is based on the Ansible Linklight project. It is a collection of Ansible playbooks packaged to build and tear down F5 and application infrastructure. It can also be used to scale the infrastructure as needed by the user. 
 
-One Time Setup
---------------
+The provisioner is made available as a Docker container to avoid environmental dependencies. In order to run the provisioner you will need the `Docker <https://docs.docker.com/install>`_ Community Edition.
+
+This version of the provisioner can be used to deploy the following components into AWS. To run the provisioner you will need - An account on `AWS <https://aws.amazon.com/>`__
+
+1. F5 BIG-IP 
+2. Ansible node
+3. 2xWeb servers
+
+.. image:: images/f5topology.png
+   :width: 400
+
+Get Familiar: One Time Setup
+----------------------------
 
 **Install docker**
 
@@ -38,10 +50,10 @@ This command will take a few minutes to complete.
   
   - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
 
-Run provisioner
----------------
+Setup your Sandbox environment
+------------------------------
 
-Now you can start to provision the environment in AWS.
+Now you can start to provision your application environment in AWS.
 
 **Make sure you move to the correct directory after the git clone and building the container above**
 
@@ -49,7 +61,7 @@ Now you can start to provision the environment in AWS.
    
    cd f5_provisioner/provisioner
 
-1. Configure f5_vars.yml to reflect your environment under provisioning.
+1. As we are using Ansible for provisioning, you will need to configure the variable file - f5_vars.yml to that will be used by the Ansible playbook. These variables reflect your AWS environment.
 
    - Modify the AWS region on which the infrastructure will spin up
    - Modify the ec2_name_prefix to represent a workshop unique to your environment
@@ -74,9 +86,7 @@ Now you can start to provision the environment in AWS.
       # workshp runs in F5 mode
       workshop_type: f5
 
-2. Run the playbook:
-
-   Use the AWS ID and KEY saved earlier
+2. Run the Ansible playbook using the AWS ID and KEY saved earlier
 
    .. code:: 
 
