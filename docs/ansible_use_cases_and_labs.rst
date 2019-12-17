@@ -1,15 +1,10 @@
 Ansible Lab & Use cases
 ========================
 
-Once the infrastucture is up and running, you will have an environment that looks like this:
+Once the infrastucture is up and running, you will have an environment that looks like below. You can now run various use cases or labs using this environment.
 
 .. image:: images/f5topology.png
    :width: 400
-
-You can now run various use cases or labs using this environment.
-
-
-**Please note that this is an on-going project and new content will be added periodically to provide additional scenarios**
 
 
 F5 Ansible 101 lab
