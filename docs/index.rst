@@ -49,7 +49,6 @@ Now that you are familiar with the prerequisites of the project, click *Next* to
    :hidden:
 
    build_environment.rst
-   use_cases.rst
-   ansible_workshop_101.rst
+   ansible_use_cases_and_labs.rst
    teardown.rst
    faq.rst
