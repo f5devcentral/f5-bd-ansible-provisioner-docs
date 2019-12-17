@@ -24,7 +24,7 @@ Before you get started, here are some minimum requirements to start using this p
 
 Filing Issues and Getting Help
 ------------------------------
-If you come across a bug or other issue when using this project use `GitHub Issues <https://github.com/f5devcentral/F5-Automation-Sandbox/issues>`_ to submit an issue for our team. You can also see the current known issues on that page, which are tagged with a purple Known Issue label.
+If you come across a bug or other issue when using this project use `GitHub Issues <https://github.com/f5devcentral/FAS-provisioner/issues>`_ to submit an issue for our team. You can also see the current known issues on that page, which are tagged with a purple Known Issue label.
 
 License and Warranty
 ---------------------
