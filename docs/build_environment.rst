@@ -40,9 +40,9 @@ This command will take a few minutes to complete.
 
 .. code::
 
-   cd f5_provisioner/docker
+   cd FAS-provisioner/docker
    docker build --no-cache -t f5_sandbox_provisioner .
-   
+      
 **AWS Setup**
 
 - Create an Amazon AWS account
@@ -61,7 +61,7 @@ Now you can start to provision your application environment in AWS.
 
 .. code::
    
-   cd f5_provisioner/provisioner
+   cd FAS-provisioner/provisioner
 
 1. As we are using Ansible for provisioning the environment, you will need to configure a variable file 'f5_vars.yml', that will be used by the Ansible playbook. The variables in this file reflect your AWS environment.
 
@@ -145,7 +145,7 @@ Example: Make sure to go to the provisioner directory
 
 .. code::
 
-   cd f5_provisioner/provisioner
+   cd FAS-provisioner/provisioner
    cat TESTWORKSHOP1/instructor_inventory.txt
    
    [all:vars]
