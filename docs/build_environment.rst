@@ -225,7 +225,7 @@ Example: Make sure to go to the provisioner directory
 
       ---
       - name: GRAB F5 FACTS
-        hosts: f5
+        hosts: lb
         connection: local
         gather_facts: no
 
@@ -240,7 +240,7 @@ Example: Make sure to go to the provisioner directory
             validate_certs: no
 
         - name: COLLECT BIG-IP FACTS
-          bigip_device_facts:
+          bigip_device_info:
             provider: "{{provider}}"
             gather_subset:
              - system-info
