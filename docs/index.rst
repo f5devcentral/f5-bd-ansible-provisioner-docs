@@ -17,6 +17,7 @@ Best of all, these scenarios are all powered with simple Ansible scripts that re
 Solution Architecture:
 -------------------------
 The solution environment has two main components:
+
 1.	The F5 Sandbox Provisioner – powered by Ansible and delivered via Docker containers, this sets up the architecture and environment. The architecture is fairly simple with some key components such as a F5 BIG IP Virtual Edition instance, an Ansible node, and a pair of web servers. You can learn more about the provisioned components in the next page.
 
 2.	Solution use cases – overlaid onto the environment are the specific solution demos referenced above. Over time, we’ll add more solution demos to the architecture. More documentation for each use case is available `here <https://clouddocs.f5.com/training/fas-ansible-use-cases/>`_.
