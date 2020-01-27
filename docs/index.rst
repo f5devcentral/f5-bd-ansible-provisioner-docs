@@ -3,14 +3,14 @@ F5 Automation Sandbox
 
 Introduction:
 ----------------------
-The F5 Automation Sandbox project provides our customers with a is a self learning evironment to get familiar with Automation for F5. Users can use this evironment to try automation solutions, build demos and proof of concepts. Using the templates provided in this project, users will be able to try various real world scenarios. 
+The F5 Automation Sandbox project provides our customers with a is a self-learning environment to get familiar with Automation for F5. Users can use this environment to try automation solutions, build demos and proof of concepts. Using the templates provided in this project, users will be able to try various real-world scenarios. 
 
 The current version of the F5 Automation sandbox has 2 main components: 
 
 1. F5/Ansible provisioner
 2. Ansible Automation use-cases
 
-More documentation for each component avaialble in the individual component pages.
+More documentation for each component available in the individual component pages.
 
 Requirements
 -------------
