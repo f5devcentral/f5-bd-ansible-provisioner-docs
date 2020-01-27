@@ -18,7 +18,7 @@ deploy:
   local_dir: docs/_build/html
   upload_dir: $AWS_DIR
   on:
-    branch: master
+    branch: staging
     repo: f5devcentral/F5-Automation-Sandbox
 #DEPLOY TO PRODUCTION
 - provider: s3

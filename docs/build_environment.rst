@@ -1,8 +1,20 @@
-Build environment
-=================
+F5 Ansible Provisioner
+======================
+The F5/Ansible provisioner is an opensource provisioning tool that is based on the Ansible Linklight project. It is a collection of Ansible playbooks packaged to build and tear down F5 and application infrastructure. It can also be used to scale the infrastructure as needed by the user. 
 
-One Time Setup
---------------
+The provisioner is made available as a Docker container to avoid environmental dependencies. In order to run the provisioner you will need the `Docker <https://docs.docker.com/install>`_ Community Edition.
+
+This version of the provisioner can be used to deploy the following components into AWS. To run the provisioner you will need - An account on `AWS <https://aws.amazon.com/>`__
+
+1. F5 BIG-IP 
+2. Ansible node
+3. 2xWeb servers
+
+.. image:: images/f5topology.png
+   :width: 400
+
+Installing the Provisioner
+--------------------------
 
 **Install docker**
 
@@ -19,7 +31,9 @@ Clone the workshop repository on the **docker_host**.
 
 **Build the container**
 
-The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a **Dockerfile**.
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a 
+
+**Dockerfile**.
 This image will be used to run the Ansible playbooks for the provisioner.
 From the directory containing the **Dockerfile**, run the build command.
 This command will take a few minutes to complete.
@@ -38,10 +52,10 @@ This command will take a few minutes to complete.
   
   - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
 
-Run provisioner
----------------
+Setup the F5 Ansible environment
+---------------------------------
 
-Now you can start to provision the environment in AWS.
+Now you can start to provision your application environment in AWS.
 
 **Make sure you move to the correct directory after the git clone and building the container above**
 
@@ -49,12 +63,12 @@ Now you can start to provision the environment in AWS.
    
    cd f5_provisioner/provisioner
 
-1. Configure f5_vars.yml to reflect your environment under provisioning.
+1. As we are using Ansible for provisioning the environment, you will need to configure a variable file 'f5_vars.yml', that will be used by the Ansible playbook. The variables in this file reflect your AWS environment.
 
    - Modify the AWS region on which the infrastructure will spin up
    - Modify the ec2_name_prefix to represent a workshop unique to your environment
    - Modify the number of students for which the environment needs to be spun up
-   - There is a dependancy on your personal AWS environment resources available if you have a large number of students
+   - There is a dependency on your personal AWS environment resources available if you have a large number of students
      - Modify the password, this password will be used to login to all machines including BIG-IP	  
 
    .. code:: yaml
@@ -71,12 +85,10 @@ Now you can start to provision the environment in AWS.
       admin_password: ansible
 
       # DO NOT CHANGE
-      # workshp runs in F5 mode
+      # workshop runs in F5 mode
       workshop_type: f5
 
-2. Run the playbook:
-
-   Use the AWS ID and KEY saved earlier
+2. Run the Ansible playbook using the AWS ID and KEY saved earlier
 
    .. code:: 
 
@@ -91,7 +103,7 @@ Now you can start to provision the environment in AWS.
    - The command mounts the repository's ``provisioner`` directory inside the container (``-v``) and passes AWS credentials as environment    variables (``-e``) to the container (the ``-e`` on the last line passes env variables to **ansible itself** and is not part of the      docker command). 
    - Docker supports multiple methods to `pass environment variables to a container <https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file>`_
    - If the environment variable already exists, the ``-e VARIABLE`` construction prevents sensitive information from appearing in bash history or the running proc.
-   - Alternatively, If using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
+   - Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
 
    .. code::
       
@@ -122,14 +134,14 @@ Now you can start to provision the environment in AWS.
 
       TESTWORKSHOP1-studentX-ansible
 
-Access the Lab
---------------
+Accessing your Environment
+---------------------------
 
 Once the provisioner has run successfully and infrastructure has been spun up.
 
-All the workbench information is stored in a local directory named after the workshop (e.g. TESTWORKSHOP1/instructor_inventory.txt) after the provisioner is run and is succesful. 
+All the workbench information is stored in a local directory named after the workshop (e.g. TESTWORKSHOP1/instructor_inventory.txt) after the provisioner is run and is successful. 
 
-Example: Make sure to go to the provisioner directoy
+Example: Make sure to go to the provisioner directory
 
 .. code::
 
@@ -336,4 +348,4 @@ Your access to the BIG-IP is verified.
 
 **Congratulations, your lab is up and running!**
 
-In the next section(s) you can explore use cases and workshops that can be run on the environment.
+In the next section(s) you can explore Ansible use cases and the 101 lab that can be run on the environment you just built.
