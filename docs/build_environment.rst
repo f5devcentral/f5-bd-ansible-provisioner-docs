@@ -68,7 +68,7 @@ Now you can start to provision your application environment in AWS.
    - Modify the AWS region on which the infrastructure will spin up
    - Modify the ec2_name_prefix to represent a workshop unique to your environment
    - Modify the number of students for which the environment needs to be spun up
-   - There is a dependancy on your personal AWS environment resources available if you have a large number of students
+   - There is a dependency on your personal AWS environment resources available if you have a large number of students
      - Modify the password, this password will be used to login to all machines including BIG-IP	  
 
    .. code:: yaml
@@ -85,7 +85,7 @@ Now you can start to provision your application environment in AWS.
       admin_password: ansible
 
       # DO NOT CHANGE
-      # workshp runs in F5 mode
+      # workshop runs in F5 mode
       workshop_type: f5
 
 2. Run the Ansible playbook using the AWS ID and KEY saved earlier
@@ -103,7 +103,7 @@ Now you can start to provision your application environment in AWS.
    - The command mounts the repository's ``provisioner`` directory inside the container (``-v``) and passes AWS credentials as environment    variables (``-e``) to the container (the ``-e`` on the last line passes env variables to **ansible itself** and is not part of the      docker command). 
    - Docker supports multiple methods to `pass environment variables to a container <https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file>`_
    - If the environment variable already exists, the ``-e VARIABLE`` construction prevents sensitive information from appearing in bash history or the running proc.
-   - Alternatively, If using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
+   - Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
 
    .. code::
       
@@ -139,9 +139,9 @@ Accessing your Environment
 
 Once the provisioner has run successfully and infrastructure has been spun up.
 
-All the workbench information is stored in a local directory named after the workshop (e.g. TESTWORKSHOP1/instructor_inventory.txt) after the provisioner is run and is succesful. 
+All the workbench information is stored in a local directory named after the workshop (e.g. TESTWORKSHOP1/instructor_inventory.txt) after the provisioner is run and is successful. 
 
-Example: Make sure to go to the provisioner directoy
+Example: Make sure to go to the provisioner directory
 
 .. code::
 
