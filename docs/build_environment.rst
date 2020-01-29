@@ -10,7 +10,7 @@ This version of the provisioner can be used to deploy the following components i
 2. Ansible node
 3. 2xWeb servers
 
-.. image:: images/f5topology.png
+.. image:: images/FAS-AWS-env.png
    :width: 400
 
 Installing the Provisioner
