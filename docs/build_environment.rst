@@ -39,49 +39,49 @@ This command will take a few minutes to complete.
 
 Create a Directory to store your docker file in our example we use /git/docker/ and VI as our editor.
 
-.. code::
-   cd /git/docker
-   vi dockerfile
+   .. code::
+      cd /git/docker
+      vi dockerfile
 
 insert the the code below in the dockerfile, save and exit.
 
-.. code::
+   .. code::
 
-   FROM python:alpine
-   
-   RUN set -ex \
-       && apk --update add rpm openssh-client openssl ca-certificates wget \
-       && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev build-base \
-       && pip3 install --upgrade pip pycrypto cffi \
-       && pip3 install ansible==2.9.9 \
-       && pip3 install jinja2 \
-       && pip3 install netaddr \
-       && pip3 install pbr \
-       && pip3 install hvac \
-       && pip3 install jmespath \
-       && pip3 install ruamel.yaml \
-       && pip3 install boto \
-       && pip3 install boto3 \
-       && pip3 install passlib \
-       && pip3 install paramiko \
-       && pip3 install urllib3 \
-       && apk del build-dependencies \
-       && rm -rf /var/cache/apk/* \
-       && mkdir -p /etc/ansible \
-       && echo 'localhost' > /etc/ansible/hosts
+      FROM python:alpine
+      
+      RUN set -ex \
+         && apk --update add rpm openssh-client openssl ca-certificates wget \
+         && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev build-base \
+         && pip3 install --upgrade pip pycrypto cffi \
+         && pip3 install ansible==2.9.9 \
+         && pip3 install jinja2 \
+         && pip3 install netaddr \
+         && pip3 install pbr \
+         && pip3 install hvac \
+         && pip3 install jmespath \
+         && pip3 install ruamel.yaml \
+         && pip3 install boto \
+         && pip3 install boto3 \
+         && pip3 install passlib \
+         && pip3 install paramiko \
+         && pip3 install urllib3 \
+         && apk del build-dependencies \
+         && rm -rf /var/cache/apk/* \
+         && mkdir -p /etc/ansible \
+         && echo 'localhost' > /etc/ansible/hosts
 
-   ENV ANSIBLE_GATHERING smart
-   ENV ANSIBLE_HOST_KEY_CHECKING false
-   ENV ANSIBLE_RETRY_FILES_ENABLED false
-   ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
-   ENV ANSIBLE_SSH_PIPELINING True
-   ENV PYTHONPATH /ansible/lib
-   ENV PATH /ansible/bin:$PATH
-   ENV ANSIBLE_LIBRARY /ansible/library
-   
-   WORKDIR /ansible/playbooks
-   
-   ENTRYPOINT ["ansible-playbook"]
+      ENV ANSIBLE_GATHERING smart
+      ENV ANSIBLE_HOST_KEY_CHECKING false
+      ENV ANSIBLE_RETRY_FILES_ENABLED false
+      ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
+      ENV ANSIBLE_SSH_PIPELINING True
+      ENV PYTHONPATH /ansible/lib
+      ENV PATH /ansible/bin:$PATH
+      ENV ANSIBLE_LIBRARY /ansible/library
+      
+      WORKDIR /ansible/playbooks
+      
+      ENTRYPOINT ["ansible-playbook"]
 
 **Build the Docker Container**.     
 First you must build the dockerfile into a docker container first make sure you are in the directory where the docker file was created then run the command (this could take a few minutes to complete)
@@ -223,19 +223,19 @@ All the workbench information is stored in a local directory named after the wor
 
 Example: Make sure to go to the provisioner directory
 
-.. code::
+   .. code::
 
-   cd /git/workshops/provisioner
-   cat MyUsername-TESTWORKSHOP1/instructor_inventory.txt
-   
-   [all:vars]
-   ansible_port=22
+      cd /git/workshops/provisioner
+      cat MyUsername-TESTWORKSHOP1/instructor_inventory.txt
+      
+      [all:vars]
+      ansible_port=22
 
-   [student1]
-   student1-ansible ansible_host=34.219.251.xxx ansible_user=ec2-user  #Ansible host/control node
-   student1-f5 ansible_host=52.39.228.xxx ansible_user=admin           #BIG-IP
-   student1-node1 ansible_host=52.43.153.xxx ansible_user=ec2-user     #Backend Web application server1
-   student1-node2 ansible_host=34.215.176.xxx ansible_user=ec2-user    #Backend Web application server2
+      [student1]
+      student1-ansible ansible_host=34.219.251.xxx ansible_user=ec2-user  #Ansible host/control node
+      student1-f5 ansible_host=52.39.228.xxx ansible_user=admin           #BIG-IP
+      student1-node1 ansible_host=52.43.153.xxx ansible_user=ec2-user     #Backend Web application server1
+      student1-node2 ansible_host=34.215.176.xxx ansible_user=ec2-user    #Backend Web application server2
 
 .. note::
 
@@ -243,10 +243,10 @@ Example: Make sure to go to the provisioner directory
    
 1. Login to Ansible control node (IP from inventory file above) using the studentID (e.g. student1) and the password mentioned in the f5_vars.yml earlier
 
-.. code::
+   .. code::
 
-   ssh student1@34.219.251.xxx
-   student1@34.219.251.xxx's password:
+      ssh student1@34.219.251.xxx
+      student1@34.219.251.xxx's password:
    
 2. Run the ansible command with the --version command. The latest version of ansible will be installed
 
@@ -355,82 +355,82 @@ Example: Make sure to go to the provisioner directory
 
 6. The output will look as follows. This playbook is grabbing information from the BIG-IP and displaying the relevant information.
 
-.. code::
+   .. code::
 
-   [student1@ansible ~]$ ansible-playbook bigip-facts.yml
+      [student1@ansible ~]$ ansible-playbook bigip-facts.yml
 
-   PLAY [GRAB F5 FACTS] 
-   ****************************************************************
-   TASK [Set a fact named 'provider' with BIG-IP login information] 
-   ****************************************************************
-   ok: [f5]
+      PLAY [GRAB F5 FACTS] 
+      ****************************************************************
+      TASK [Set a fact named 'provider' with BIG-IP login information] 
+      ****************************************************************
+      ok: [f5]
 
-   TASK [COLLECT BIG-IP FACTS] 
-   ****************************************************************
-   changed: [f5]
+      TASK [COLLECT BIG-IP FACTS] 
+      ****************************************************************
+      changed: [f5]
 
-   TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] 
-   ****************************************************************
+      TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] 
+      ****************************************************************
 
-   ok: [f5] =>
-   device_facts:
-      ansible_facts:
-         discovered_interpreter_python: /usr/libexec/platform-python
-      changed: false
-      failed: false
-      queried: true
-      system_info:
-         base_mac_address: 06:07:82:7f:d9:09
-         chassis_serial: 46fc25ec-50a7-269e-edc8ae8cd962
-         hardware_information:
-         - model: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
-         name: cpus
-         type: base-board
-         versions:
-         - name: cache size
-            version: 46080 KB
-         - name: cores
-            version: 2  (physical:2)
-         - name: cpu MHz
-            version: '2299.968'
-         - name: cpu sockets
-            version: '1'
-         - name: cpu stepping
-            version: '1'
-         marketing_name: BIG-IP Virtual Edition
-         package_edition: Point Release 4
-         package_version: Build 0.0.5 - Tue Jun 16 14:26:18 PDT 2020
-         platform: Z100
-         product_build: 0.0.5
-         product_build_date: Tue Jun 16 14:26:18 PDT 2020
-         product_built: 200616142618
-         product_changelist: 3337209
-         product_code: BIG-IP
-         product_jobid: 1206494
-         product_version: 13.1.3.4
-         time:
-         day: 17
-         hour: 18
-         minute: 15
-         month: 8
-         second: 12
-         year: 2020
-         uptime: 3925
+      ok: [f5] =>
+      device_facts:
+         ansible_facts:
+            discovered_interpreter_python: /usr/libexec/platform-python
+         changed: false
+         failed: false
+         queried: true
+         system_info:
+            base_mac_address: 06:07:82:7f:d9:09
+            chassis_serial: 46fc25ec-50a7-269e-edc8ae8cd962
+            hardware_information:
+            - model: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+            name: cpus
+            type: base-board
+            versions:
+            - name: cache size
+               version: 46080 KB
+            - name: cores
+               version: 2  (physical:2)
+            - name: cpu MHz
+               version: '2299.968'
+            - name: cpu sockets
+               version: '1'
+            - name: cpu stepping
+               version: '1'
+            marketing_name: BIG-IP Virtual Edition
+            package_edition: Point Release 4
+            package_version: Build 0.0.5 - Tue Jun 16 14:26:18 PDT 2020
+            platform: Z100
+            product_build: 0.0.5
+            product_build_date: Tue Jun 16 14:26:18 PDT 2020
+            product_built: 200616142618
+            product_changelist: 3337209
+            product_code: BIG-IP
+            product_jobid: 1206494
+            product_version: 13.1.3.4
+            time:
+            day: 17
+            hour: 18
+            minute: 15
+            month: 8
+            second: 12
+            year: 2020
+            uptime: 3925
 
 
-   TASK [DISPLAY ONLY THE MAC ADDRESS] 
-   ****************************************************************
-   ok: [f5] =>
-     device_facts['system_info']['base_mac_address']: 06:07:82:7f:d9:09
+      TASK [DISPLAY ONLY THE MAC ADDRESS] 
+      ****************************************************************
+      ok: [f5] =>
+      device_facts['system_info']['base_mac_address']: 06:07:82:7f:d9:09
 
-   TASK [DISPLAY ONLY THE VERSION] 
-   ****************************************************************
-   ok: [f5] =>
-     device_facts['system_info']['product_version']: 13.1.3.4
+      TASK [DISPLAY ONLY THE VERSION] 
+      ****************************************************************
+      ok: [f5] =>
+      device_facts['system_info']['product_version']: 13.1.3.4
 
-   PLAY RECAP 
-   ****************************************************************
-   f5                         : ok=5    changed=0    unreachable=0    failed=0
+      PLAY RECAP 
+      ****************************************************************
+      f5                         : ok=5    changed=0    unreachable=0    failed=0
    
 You have been successful in logging into the BIG-IP and grabbing/displaying facts. 
 Your access to the BIG-IP is verified.
