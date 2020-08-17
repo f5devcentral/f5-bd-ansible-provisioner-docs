@@ -6,9 +6,9 @@ The provisioner is made available as a Docker container to avoid environmental d
 
 This version of the provisioner can be used to deploy the following components into AWS. To run the provisioner you will need - An account on `AWS <https://aws.amazon.com/>`__
 
-1. F5 BIG-IP 
-2. Ansible node
-3. 2x Web servers
+- F5 BIG-IP 
+- Ansible node
+- 2x Web servers
 
 .. image:: images/FAS-AWS-env.png
    :width: 400
@@ -40,6 +40,7 @@ This command will take a few minutes to complete.
 Create a Directory to store your docker file in our example we use /git/docker/ and VI as our editor.
 
    .. code::
+   
       cd /git/docker
       vi dockerfile
 
