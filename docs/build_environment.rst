@@ -189,6 +189,17 @@ Now you can start to provision your application environment in AWS.
       -v /git:/ansible/vars \
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
 
+   Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
+   .. code::
+      
+      cd /git/workshops/provisioner
+      docker run \
+      -v ~/.aws/credentials:/root/.aws/credentials \
+      -v $(pwd)/../provisioner:/ansible/playbooks \
+      -v /git:/ansible/vars \
+      ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
+   
+
    .. note::
 
      Correct the issue and run the provision playbook again (Step 2).
