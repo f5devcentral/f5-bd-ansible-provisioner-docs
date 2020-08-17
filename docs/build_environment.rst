@@ -18,10 +18,10 @@ Installing the Provisioner
 **Clone the Repository**
 Clone the workshop repository on the docker_host in our example we use /git/ as our directory.
 
-.. code::
+   .. code::
 
-   cd /git/
-   git clone https://github.com/ansible/workshops.git
+      cd /git/
+      git clone https://github.com/ansible/workshops.git
 
 **Install Docker**
 
