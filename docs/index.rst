@@ -1,11 +1,11 @@
-F5 Automation Sandbox
+Ansible Automation Workshops
 ======================
 
 Introduction:
 ----------------------
-The F5 Solution Sandbox provides a demo environment to get familiar with the solutions that F5 provides in security, performance, and visibility. Users can use this environment to try automation solutions, build demos and proof of concepts. Using the scenarios provided, users will be able to experience how F5 adds value and integrates into your build environment seamlessly.
+The Ansible Automation Workshops provides a demo (Sandbox) environment to get familiar with various solutions.  This includes F5 products in security, performance, and visibility. Users can use this environment to try F5 automation solutions, build demos and proof of concepts. Using the scenarios provided, users will be able to experience how F5 adds value and integrates into your build environment seamlessly.
 
-The F5 Solution Sandbox delivers a few common scenarios to help you learn more:
+The Ansible Automation Sandbox delivers a few common scenarios to help you learn more:
 
 * Virtaul server deployment with redirection of HTTP to HTTPS traffic to enforce secured connections
 * An automated SSL certificate update scenario to manage key updates
@@ -18,7 +18,7 @@ Solution Architecture:
 -------------------------
 The solution environment has two main components:
 
-1.	The F5 Sandbox Provisioner – powered by Ansible and delivered via Docker containers, this sets up the architecture and environment. The architecture is fairly simple with some key components such as a F5 BIG IP Virtual Edition instance, an Ansible node, and a pair of web servers. You can learn more about the provisioned components in the next page.
+1.	The Ansible Workshop Provisioner – powered by Ansible and delivered via Docker containers, this sets up the architecture and environment. The architecture is fairly simple with some key components such as a F5 BIG IP Virtual Edition instance, an Ansible node, and a pair of web servers. You can learn more about the provisioned components in the next page.
 
 2.	Solution use cases – overlaid onto the environment are the specific solution demos referenced above. Over time, we’ll add more solution demos to the architecture. More documentation for each use case is available `here <https://clouddocs.f5.com/training/fas-ansible-use-cases/>`_.
 
@@ -34,7 +34,7 @@ Before you get started, here are some minimum requirements to start using this p
 
 Filing Issues and Getting Help
 ------------------------------
-If you come across a bug or other issue when using this project use `GitHub Issues <https://github.com/f5devcentral/FAS-provisioner/issues>`_ to submit an issue for our team. You can also see the current known issues on that page, which are tagged with a purple Known Issue label.
+If you come across a bug or other issue when using this project use `GitHub Issues <https://github.com/ansible/workshops/issues/>`_ to submit an issue. You can also see the current known issues on that page, which are tagged with a orange "f5-workshop" label.
 
 License and Warranty
 ---------------------
