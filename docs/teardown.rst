@@ -9,7 +9,6 @@ To destroy all the EC2 instances after training is complete:
 
 2. Run the playbook with the same var files used to provision the infrastructure
 
-
    .. code:: 
 
       cd /git/workshops/provisioner
@@ -21,6 +20,7 @@ To destroy all the EC2 instances after training is complete:
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
 
    Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
+
    .. code::
       
       cd /git/workshops/provisioner
