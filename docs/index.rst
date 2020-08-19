@@ -7,24 +7,24 @@ The Ansible Automation Workshops provides a demo (Sandbox) environment to get fa
 
 The Ansible Automation Sandbox delivers a few common scenarios to help you learn more:
 
-* Virtaul server deployment with redirection of HTTP to HTTPS traffic to enforce secured connections
+* Virtual server deployment with redirection of HTTP to HTTPS traffic to enforce secured connections
 * An automated SSL certificate update scenario to manage key updates
 * Web server pool membership management as a server maintenance scenario
 * A Web Application Firewall policy management with URL and IP adress blocking scenario
 
-Best of all, these scenarios are all powered with simple Ansible scripts that require zero knowledge of F5 configuration. 
+Best of all, these scenarios are powered with simple Ansible scripts that require zero knowledge of F5 configuration. 
 
 Solution Architecture:
 -------------------------
 The solution environment has two main components:
 
-1.	The Ansible Workshop Provisioner – powered by Ansible and delivered via Docker containers, this sets up the architecture and environment. The architecture is fairly simple with some key components such as a F5 BIG IP Virtual Edition instance, an Ansible node, and a pair of web servers. You can learn more about the provisioned components in the next page.
+1.	The Ansible Workshop Provisioner – powered by Ansible and delivered via Docker containers, this sets up the architecture and environment. The architecture is fairly simple which includes some key components such as a F5 BIG IP Virtual Edition instance, an Ansible node, and a pair of web servers. You can learn more about the provisioned components in the next page.
 
 2.	Solution use cases – overlaid onto the environment are the specific solution demos referenced above. Over time, we’ll add more solution demos to the architecture. More documentation for each use case is available `here <https://clouddocs.f5.com/training/fas-ansible-use-cases/>`_.
 
 Requirements
 -------------
-Before you get started, here are some minimum requirements to start using this project: 
+Here are some minimum requirements to start using this project: 
 
 * Knowledge on using Linux environments 
 * Knowledge on how to run docker containers    

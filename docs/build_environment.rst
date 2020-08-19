@@ -1,6 +1,6 @@
 Ansible Provisioner
 ======================
-The Ansible/F5 provisioner is an opensource provisioning tool that is based on the Ansible Linklight project. It is a collection of Ansible playbooks packaged to build and tear down F5 and application infrastructure. It can also be used to scale the infrastructure as needed by the user. 
+The Ansible/F5 provisioner is an opensource provisioning tool. It is a collection of Ansible playbooks packaged to build and tear down F5 and application infrastructure. It can also be used to scale the infrastructure as needed by the user. 
 
 The provisioner is made available as a Docker container to avoid environmental dependencies. In order to run the provisioner you will need the `Docker <https://docs.docker.com/install>`_ Community Edition.
 
@@ -16,7 +16,8 @@ This version of the provisioner can be used to deploy the following components i
 Installing the Provisioner
 --------------------------
 **Clone the Repository**
-Clone the workshop repository on the docker_host in our example we use /git/ as our directory.
+
+Clone the workshop repository on the docker_host. In our example we use /git/ as our directory.
 
    .. code::
 
@@ -30,21 +31,18 @@ Elsewhere in these instructions we will refer to the machine with the docker ins
 
 **Create DockerFile and Build the Container**
 
-The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a 
-
-**Dockerfile**.
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command builds an image from a **Dockerfile**.
 This image will be used to run the Ansible playbooks for the provisioner.
-From the directory containing the **Dockerfile**, run the build command.
-This command will take a few minutes to complete.
+From the directory containing the **Dockerfile**, we will run the build command.
 
-Create a Directory to store your docker file in our example we use /git/docker/ and VI as our editor.
+Create a Directory to store your docker file. In our example we use /git/docker/ and VI as our editor.
 
    .. code::
 
       cd /git/docker
       vi dockerfile
 
-insert the the code below in the dockerfile, save and exit.
+Insert the the code below in the dockerfile, save and exit.
 
    .. code::
 
@@ -84,19 +82,22 @@ insert the the code below in the dockerfile, save and exit.
       
       ENTRYPOINT ["ansible-playbook"]
 
-**Build the Docker Container**.     
-First you must build the dockerfile into a docker container first make sure you are in the directory where the docker file was created then run the command (this could take a few minutes to complete)
+**Build the Docker Container**
+
+First you must build the dockerfile into a docker container. Make sure you are in the directory where the docker file was created then run the command (this could take a few minutes to complete)
 Take note that the "period" (.) at the end of the command line is necessary to execute properly.
 
-.. code::
-   cd /git/docker/
-   docker build --no-cache -t "ansible_workshop:dockerfile" .
+ .. code::
+   
+    cd /git/docker/
+    docker build --no-cache -t "ansible_workshop:dockerfile" .
 
 Assuming that the build was completed it should look something like this at the bottom of the code
 
-.. code::
-   Successfully built e1ce736ec3fd
-   Successfully tagged ansible_workshop:dockerfile
+ .. code::
+ 
+    Successfully built e1ce736ec3fd
+    Successfully tagged ansible_workshop:dockerfile
 
 **AWS Setup**
 
@@ -125,6 +126,7 @@ Now you can start to provision your application environment in AWS.
    Here is an example of our 'f5_vars.yml' file feel free to edit sections that are required
 
    .. code:: 
+    
       # Region (Change to your desired EC2 Region)
       ec2_region: us-west-2
 
@@ -178,7 +180,7 @@ Now you can start to provision your application environment in AWS.
 
    .. note::
 
-      **If the provisioning is not successful**, please teardown the lab by running the teardown playbook.
+      **If the provisioning is not successful**, please teardown the lab by running the teardown playbook as described below.
 
    .. code::
 
@@ -220,7 +222,7 @@ Accessing your Environment
 
 Once the provisioner has run successfully and infrastructure has been spun up.
 
-All the workbench information is stored in a local directory named after the workshop (e.g. MyUsername-TESTWORKSHOP1/instructor_inventory.txt) after the provisioner is run and is successful. 
+All the workbench information is stored in a local directory named after the workshop (e.g. MyUsername-TESTWORKSHOP1/instructor_inventory.txt). 
 
 Example: Make sure to go to the provisioner directory
 
@@ -275,6 +277,7 @@ Example: Make sure to go to the provisioner directory
    The output will look as follows with student1 being the respective student workbench:
 
    Output from (ls f5-workshop)
+   
    .. code::
 
       [student1@ansible ~]$ ls f5-workshop/
@@ -349,10 +352,10 @@ Example: Make sure to go to the provisioner directory
 
 5. Run the playbook - exit back into the command line of the control host and execute the following:
 
-  .. code:: bash
+   .. code:: bash
 
-     cd ~/
-     [student1@ansible ~]$ ansible-playbook bigip-facts.yml
+      cd ~/
+      [student1@ansible ~]$ ansible-playbook bigip-facts.yml
 
 6. The output will look as follows. This playbook is grabbing information from the BIG-IP and displaying the relevant information.
 
