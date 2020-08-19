@@ -5,7 +5,7 @@ The teardown_lab.yml playbook deletes all the sandbox instances as well as local
 
 To destroy all the EC2 instances after training is complete:
 
-1. Login to the Ansible host **ansible_server_provioner**
+1. Login to the Docker host as per the build_environment section **docker_host**
 
 2. Run the playbook with the same var files used to provision the infrastructure
 

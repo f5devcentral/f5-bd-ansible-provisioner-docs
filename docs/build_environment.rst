@@ -106,7 +106,7 @@ Assuming that the build was completed it should look something like this at the 
 - New to AWS and not sure what this step means? `Click here <https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/>`__
 - Make sure you have subscribed to the right marketplace AMI (Amazon Machine Image).
   
-  - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
+  - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C4WR32>`__
 
 Setup the F5 Ansible environment
 ---------------------------------
