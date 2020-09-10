@@ -1,5 +1,5 @@
-Ansible Automation Workshops TEST
-======================
+Ansible Automation Workshops
+============================
 
 Introduction:
 ----------------------
