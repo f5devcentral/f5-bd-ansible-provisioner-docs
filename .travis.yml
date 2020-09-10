@@ -19,7 +19,7 @@ deploy:
   upload_dir: $AWS_DIR
   on:
     branch: staging
-    repo: f5devcentral/F5-Automation-Sandbox
+    repo: f5devcentral/f5-bd-ansible-provisioner-docs
 #DEPLOY TO PRODUCTION
 - provider: s3
   skip_cleanup: true
@@ -30,7 +30,7 @@ deploy:
   upload_dir: $AWS_DIR
   on:
     branch: master
-    repo: f5devcentral/F5-Automation-Sandbox
+    repo: f5devcentral/f5-bd-ansible-provisioner-docs
 
 after_deploy:
   - aws cloudfront create-invalidation --distribution-id $AWS_DIST_ID --paths $AWS_DIR
