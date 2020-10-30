@@ -148,6 +148,7 @@ Now you can start to provision your application environment in AWS.
       create_login_page: true
       autolicense: false
       towerinstall: false
+      ibm_community_grid: false
 
 2. Run the Ansible playbook 
 
