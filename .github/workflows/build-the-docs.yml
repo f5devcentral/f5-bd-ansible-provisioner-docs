@@ -2,7 +2,7 @@ name: Build the Docs
 on:
   push:
     branches:
-      - staging
+      - dev
       - main
 jobs:
   deploy:
@@ -24,7 +24,7 @@ jobs:
 
     - name: Copy files to s3 (Staging Clouddocs)
       if:
-        github.ref == 'refs/heads/staging'
+        github.ref == 'refs/heads/dev'
       run: |
         aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5networks.net/training/$S3_DIR/
 
