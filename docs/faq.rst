@@ -1,8 +1,8 @@
 FAQ and troubleshooting
-======================
+=======================
 
 Q:Tasks being run by the provisioner?
---------------------------------------
+-------------------------------------
 
 The provision_lab.yml playbook creates a work bench for each
 student, configures them for password authentication, and creates an
@@ -12,7 +12,7 @@ will let the instructor access the nodes of any student. This file will
 be called ``instructor_inventory.txt``
 
 Q:What gets created on AWS 
--------------------------
+--------------------------
 
 - AWS VPC creation (Amazon Web Services Virtual Private Cloud) 
 - Creation of an SSH key pair (stored at ./WORKSHOPNAME/WORKSHOPNAME-private.pem) 
@@ -20,7 +20,7 @@ Q:What gets created on AWS
 - Creation of an internet gateway for the VPC - Creation of route table for VPC (for reachability from internet)
 
 Q:What EC2 instances does provisioner spin up
-----------------------------------------------
+---------------------------------------------
 
 - One ansible control node using a Centos image 
 - Two webservers using a Centos image 
@@ -65,7 +65,7 @@ OR
    pip install boto boto3
 
 Problem:unable to locate credentials
--------------------------------------
+------------------------------------
 
 .. code::
 
