@@ -1,8 +1,9 @@
 Ansible Provisioner
-======================
+===================
+
 The Ansible/F5 provisioner is an opensource provisioning tool. It is a collection of Ansible playbooks packaged to build and tear down F5 and application infrastructure. It can also be used to scale the infrastructure as needed by the user. 
 
-The provisioner is made available as a Docker container to avoid environmental dependencies. In order to run the provisioner you will need the `Docker <https://docs.docker.com/install>`_ Community Edition.
+The provisioner is made available as a Docker container to avoid environmental dependencies. In order to run the provisioner you will need the `Docker Community Edition <https://docs.docker.com/install>`_.
 
 This version of the provisioner can be used to deploy the following components into AWS. To run the provisioner you will need - An account on `AWS <https://aws.amazon.com/>`__
 
@@ -15,6 +16,7 @@ This version of the provisioner can be used to deploy the following components i
 
 Installing the Provisioner
 --------------------------
+
 **Clone the Repository**
 
 Clone the workshop repository on the docker_host. In our example we use /git/ as our directory.
@@ -27,6 +29,7 @@ Clone the workshop repository on the docker_host. In our example we use /git/ as
 **Install Docker**
 
 Using your local machine or a dedicated host, install `Docker <https://docs.docker.com/install/>`_.
+
 Elsewhere in these instructions we will refer to the machine with the docker installation as **docker_host**.
 
 **Create DockerFile and Build the Container**
@@ -109,7 +112,7 @@ Assuming that the build was completed it should look something like this at the 
   - F5 BIG-IP `Click here to subscribe <https://aws.amazon.com/marketplace/pp/B079C44MFH/>`__
 
 Setup the F5 Ansible environment
----------------------------------
+--------------------------------
 
 Now you can start to provision your application environment in AWS.
 
@@ -218,7 +221,7 @@ Now you can start to provision your application environment in AWS.
 
 
 Accessing your Environment
----------------------------
+--------------------------
 
 Once the provisioner has run successfully and infrastructure has been spun up.
 
