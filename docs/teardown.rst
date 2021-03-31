@@ -16,7 +16,7 @@ To destroy all the EC2 instances after training is complete:
       -e AWS_ACCESS_KEY_ID=ABCDEFGHIJKLMNOP \
       -e AWS_SECRET_ACCESS_KEY=ABCDEFGHIJKLMNOP/ABCDEFGHIJKLMNOP \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
 
    Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
@@ -27,5 +27,5 @@ To destroy all the EC2 instances after training is complete:
       docker run \
       -v ~/.aws/credentials:/root/.aws/credentials \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml

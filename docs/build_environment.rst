@@ -42,48 +42,50 @@ Create a Directory to store your docker file. In our example we use /git/docker/
 
    .. code::
 
-      cd /git/docker
+      cd /git/docker/
       vi dockerfile
 
 Insert the the code below in the dockerfile, save and exit.
 
    .. code::
 
-      FROM python:alpine
-      
-      RUN set -ex \
-         && apk --update add rpm openssh-client openssl ca-certificates wget \
-         && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev build-base \
-         && pip3 install --upgrade pip pycrypto cffi \
-         && pip3 install ansible==2.9.9 \
-         && pip3 install jinja2 \
-         && pip3 install netaddr \
-         && pip3 install pbr \
-         && pip3 install hvac \
-         && pip3 install jmespath \
-         && pip3 install ruamel.yaml \
-         && pip3 install boto \
-         && pip3 install boto3 \
-         && pip3 install passlib \
-         && pip3 install paramiko \
-         && pip3 install urllib3 \
-         && apk del build-dependencies \
-         && rm -rf /var/cache/apk/* \
-         && mkdir -p /etc/ansible \
-         && echo 'localhost' > /etc/ansible/hosts
+   FROM python:alpine
 
-      ENV ANSIBLE_GATHERING smart
-      ENV ANSIBLE_HOST_KEY_CHECKING false
-      ENV ANSIBLE_RETRY_FILES_ENABLED false
-      ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
-      ENV ANSIBLE_SSH_PIPELINING True
-      ENV PYTHONPATH /ansible/lib
-      ENV PATH /ansible/bin:$PATH
-      ENV ANSIBLE_LIBRARY /ansible/library
-      
-      WORKDIR /ansible/playbooks
-      
-      ENTRYPOINT ["ansible-playbook"]
+   RUN set -ex \
+      && apk --update add rpm openssh-client openssl ca-certificates wget \
+      && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev cargo build-base \
+      && pip3 install --upgrade pip pycrypto cffi \
+      && pip3 install setuptools wheel \
+      && pip3 install cryptography \ 
+      && pip3 install ansible \
+      && pip3 install jinja2 \
+      && pip3 install netaddr \
+      && pip3 install pbr \
+      && pip3 install hvac \
+      && pip3 install jmespath \
+      && pip3 install ruamel.yaml \
+      && pip3 install boto \
+      && pip3 install boto3 \
+      && pip3 install passlib \
+      && pip3 install paramiko \
+      && pip3 install urllib3 \
+      && apk del build-dependencies \
+      && rm -rf /var/cache/apk/* \
+      && mkdir -p /etc/ansible \
+      && echo 'localhost' > /etc/ansible/hosts
+
+   ENV ANSIBLE_GATHERING smart
+   ENV ANSIBLE_HOST_KEY_CHECKING false
+   ENV ANSIBLE_RETRY_FILES_ENABLED false
+   ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
+   ENV ANSIBLE_SSH_PIPELINING True
+   ENV PYTHONPATH /ansible/lib
+   ENV PATH /ansible/bin:$PATH
+   ENV ANSIBLE_LIBRARY /ansible/library
+
+   WORKDIR /ansible/playbooks
+
+   ENTRYPOINT ["ansible-playbook"]
 
 **Build the Docker Container**
 
@@ -119,11 +121,11 @@ Now you can start to provision your application environment in AWS.
 1. As we are using Ansible for provisioning the environment, you will need to configure a variable file 'f5_vars.yml', that will be used by the Ansible playbook. The variables in this file reflect your AWS environment.
 
    Our preference is to create a f5_vars file outside of the github repository for future pulls/updates can be done without hiding the file also incase of forking the environment your variables are not captured and stored in the cloud. 
-   in our example we use /git/ as the directory to store the 'f5_vars.yml' file and VI as our editor
+   in our example we use /git/vars/ as the directory to store the 'f5_vars.yml' file and VI as our editor
 
    .. code:: 
 
-      cd /git/
+      cd /git/vars/
       vi f5_vars.yml
 
    Here is an example of our 'f5_vars.yml' file feel free to edit sections that are required
@@ -148,6 +150,7 @@ Now you can start to provision your application environment in AWS.
       #These Variables We are uncertain of their use but are required to be called out during the provisioning of the Ansible Workshop
       doubleup: no
       dns_type: aws
+      workshop_dnz_zone: "myRoute3Domain.fqdn"
       create_login_page: true
       autolicense: false
       towerinstall: false
@@ -163,7 +166,7 @@ Now you can start to provision your application environment in AWS.
       -e AWS_ACCESS_KEY_ID=ABCDEFGHIJKLMNOP \
       -e AWS_SECRET_ACCESS_KEY=ABCDEFGHIJKLMNOP/ABCDEFGHIJKLMNOP \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile provision_lab.yml -e @/ansible/vars/f5_vars.yml
 
    This command will take several minutes to complete.
@@ -179,7 +182,7 @@ Now you can start to provision your application environment in AWS.
       docker run \
       -v ~/.aws/credentials:/root/.aws/credentials \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile provision_lab.yml -e @/ansible/vars/f5_vars.yml
 
    .. note::
@@ -193,7 +196,7 @@ Now you can start to provision your application environment in AWS.
       -e AWS_ACCESS_KEY_ID=ABCDEFGHIJKLMNOP \
       -e AWS_SECRET_ACCESS_KEY=ABCDEFGHIJKLMNOP/ABCDEFGHIJKLMNOP \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
 
    Alternatively, if using an `AWS CLI credential file <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html>`_ a mapped volume could be used. For example:
@@ -203,7 +206,7 @@ Now you can start to provision your application environment in AWS.
       docker run \
       -v ~/.aws/credentials:/root/.aws/credentials \
       -v $(pwd)/../provisioner:/ansible/playbooks \
-      -v /git:/ansible/vars \
+      -v /git/vars:/ansible/vars \
       ansible_workshop:dockerfile teardown_lab.yml -e @/ansible/vars/f5_vars.yml
    
 
