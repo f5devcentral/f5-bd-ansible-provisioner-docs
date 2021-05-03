@@ -49,43 +49,42 @@ Insert the the code below in the dockerfile, save and exit.
 
    .. code::
 
-   FROM python:alpine
+      FROM python:alpine
+      RUN set -ex \
+         && apk --update add rpm openssh-client openssl ca-certificates wget \
+         && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev cargo build-base \
+         && pip3 install --upgrade pip pycrypto cffi \
+         && pip3 install setuptools wheel \
+         && pip3 install cryptography \ 
+         && pip3 install ansible \
+         && pip3 install jinja2 \
+         && pip3 install netaddr \
+         && pip3 install pbr \
+         && pip3 install hvac \
+         && pip3 install jmespath \
+         && pip3 install ruamel.yaml \
+         && pip3 install boto \
+         && pip3 install boto3 \
+         && pip3 install passlib \
+         && pip3 install paramiko \
+         && pip3 install urllib3 \
+         && apk del build-dependencies \
+         && rm -rf /var/cache/apk/* \
+         && mkdir -p /etc/ansible \
+         && echo 'localhost' > /etc/ansible/hosts
 
-   RUN set -ex \
-      && apk --update add rpm openssh-client openssl ca-certificates wget \
-      && apk --update add --virtual build-dependencies python3-dev libffi-dev openssl-dev cargo build-base \
-      && pip3 install --upgrade pip pycrypto cffi \
-      && pip3 install setuptools wheel \
-      && pip3 install cryptography \ 
-      && pip3 install ansible \
-      && pip3 install jinja2 \
-      && pip3 install netaddr \
-      && pip3 install pbr \
-      && pip3 install hvac \
-      && pip3 install jmespath \
-      && pip3 install ruamel.yaml \
-      && pip3 install boto \
-      && pip3 install boto3 \
-      && pip3 install passlib \
-      && pip3 install paramiko \
-      && pip3 install urllib3 \
-      && apk del build-dependencies \
-      && rm -rf /var/cache/apk/* \
-      && mkdir -p /etc/ansible \
-      && echo 'localhost' > /etc/ansible/hosts
+      ENV ANSIBLE_GATHERING smart
+      ENV ANSIBLE_HOST_KEY_CHECKING false
+      ENV ANSIBLE_RETRY_FILES_ENABLED false
+      ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
+      ENV ANSIBLE_SSH_PIPELINING True
+      ENV PYTHONPATH /ansible/lib
+      ENV PATH /ansible/bin:$PATH
+      ENV ANSIBLE_LIBRARY /ansible/library
 
-   ENV ANSIBLE_GATHERING smart
-   ENV ANSIBLE_HOST_KEY_CHECKING false
-   ENV ANSIBLE_RETRY_FILES_ENABLED false
-   ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
-   ENV ANSIBLE_SSH_PIPELINING True
-   ENV PYTHONPATH /ansible/lib
-   ENV PATH /ansible/bin:$PATH
-   ENV ANSIBLE_LIBRARY /ansible/library
+      WORKDIR /ansible/playbooks
 
-   WORKDIR /ansible/playbooks
-
-   ENTRYPOINT ["ansible-playbook"]
+      ENTRYPOINT ["ansible-playbook"]
 
 **Build the Docker Container**
 
