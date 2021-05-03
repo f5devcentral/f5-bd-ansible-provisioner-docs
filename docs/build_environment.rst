@@ -72,6 +72,7 @@ Insert the the code below in the dockerfile, save and exit.
          && rm -rf /var/cache/apk/* \
          && mkdir -p /etc/ansible \
          && echo 'localhost' > /etc/ansible/hosts
+
       ENV ANSIBLE_GATHERING smart
       ENV ANSIBLE_HOST_KEY_CHECKING false
       ENV ANSIBLE_RETRY_FILES_ENABLED false
@@ -80,7 +81,9 @@ Insert the the code below in the dockerfile, save and exit.
       ENV PYTHONPATH /ansible/lib
       ENV PATH /ansible/bin:$PATH
       ENV ANSIBLE_LIBRARY /ansible/library
+
       WORKDIR /ansible/playbooks
+      
       ENTRYPOINT ["ansible-playbook"]
 
 **Build the Docker Container**
